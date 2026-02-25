@@ -4,8 +4,15 @@ from PIL import Image
 import json
 import io
 
-# Set Tesseract Path (Manually located)
-pytesseract.pytesseract.tesseract_cmd = r'C:\Users\abhis\tesseract.exe'
+import platform
+
+# Set Tesseract Path based on OS
+if platform.system() == "Windows":
+    # Manually located Windows path
+    pytesseract.pytesseract.tesseract_cmd = r'C:\Users\abhis\tesseract.exe'
+else:
+    # Linux (Streamlit Cloud) path
+    pytesseract.pytesseract.tesseract_cmd = '/usr/bin/tesseract'
 
 # Page Config
 st.set_page_config(
